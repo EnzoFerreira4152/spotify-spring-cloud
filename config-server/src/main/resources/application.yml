@@ -9,5 +9,5 @@ spring:
       server:
         git:
           uri: https://github.com/EnzoFerreira4152/spotify-spring-cloud.git
-          default-label: main
+          default-label: develop
           search-path: config-data
