@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api-music/api-music.iml" filepath="$PROJECT_DIR$/api-music/api-music.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-playlist/api-playlist.iml" filepath="$PROJECT_DIR$/api-playlist/api-playlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/euraka-server/euraka-server.iml" filepath="$PROJECT_DIR$/euraka-server/euraka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spotify-spring-cloud.iml" filepath="$PROJECT_DIR$/.idea/spotify-spring-cloud.iml" />
+    </modules>
+  </component>
+</project>

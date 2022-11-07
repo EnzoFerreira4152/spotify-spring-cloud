@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:8888}
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/EnzoFerreira4152/spotify-spring-cloud.git
+          default-label: main
+          search-path: config-data
