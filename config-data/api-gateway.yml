@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: FilterCustom
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: apiMusic
+          uri: lb://api-music
+          predicates:
+            - Path=/api/v1/musics/**
+        - id: apiPlaylist
+          uri: lb://api-playlist
+          predicates:
+            - Path=/api/v1/playlists/**
