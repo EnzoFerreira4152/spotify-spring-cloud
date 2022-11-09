@@ -19,7 +19,6 @@ public class MusicService {
         musicRepository.save(music);
     }
 
-
     public List<Music> getAll() {
         return musicRepository.findAll();
     }
@@ -27,7 +26,6 @@ public class MusicService {
     public Music getById(Long id) {
         return musicRepository.findById(id).orElse(null);
     }
-
 
     public void deleteById(Long id) {
         musicRepository.deleteById(id);
