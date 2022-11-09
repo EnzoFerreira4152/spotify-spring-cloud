@@ -11,8 +11,6 @@ eureka:
 spring:
   cloud:
     gateway:
-      default-filters:
-        - name: FilterCustom
       discovery:
         locator:
           enabled: true

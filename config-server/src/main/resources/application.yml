@@ -10,4 +10,4 @@ spring:
         git:
           uri: https://github.com/EnzoFerreira4152/spotify-spring-cloud.git
           default-label: develop
-          search-path: config-data
+          search-paths: config-data
