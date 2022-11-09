@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serial;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,6 +32,7 @@ public class PlayListMusic {
 
     @Column(name = "MUSIC_ID", nullable = false)
     private Long musicId;
+
     @Column(name = "MUSIC_NAME", nullable = false)
     private String musicName;
 }

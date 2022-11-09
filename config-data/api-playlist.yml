@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:0}
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spotify-dev
+    username: usr-spotify
+    password: pwd-spotify
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true

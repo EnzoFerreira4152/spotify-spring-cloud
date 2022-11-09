@@ -35,7 +35,6 @@ public class PlaylistController {
         return ResponseEntity.ok().build();
     }
 
-
     @PatchMapping("/addMusic")
     @ResponseStatus(code = HttpStatus.OK)
     public ResponseEntity addMusic(@RequestBody AddMusicDto addMusicDto) {
