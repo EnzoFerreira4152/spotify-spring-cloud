@@ -9,11 +9,23 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 329295448206-qba1cktbpe5qargcg9ohegki337h7qj0.apps.googleusercontent.com
+            client-secret: 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
+            scope: openid
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
+      default-filters:
+        - TokenRelay
       routes:
         - id: apiMusic
           uri: lb://api-music

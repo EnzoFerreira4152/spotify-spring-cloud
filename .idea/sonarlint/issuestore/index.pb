@@ -7,8 +7,6 @@ E
 config-server/pom.xml,a\2\a2f9618c8ad821b143a07a29a9805fcb0b2df470
 A
 api-music/pom.xml,2\1\2104ef409d3d0ed054963b165caefad16ce33621
-C
-api-gateway/pom.xml,2\b\2bfa2b108f2439e99e004f4085b58c22cf995f73
 ‚
 Rapi-playlist/src/main/java/com/spotify/playlist/repository/PlaylistRepository.java,1\c\1c3bc011cc47051935ca30a1c99cac7f314bb4bf
 y
@@ -41,8 +39,6 @@ O
 api-playlist/test/testUnit.http,8\5\85adf154714614b691a0dbe475c320767e1b5846
 U
 %api-playlist/test/testApiGateway.http,9\6\969937c1f32d78eddc90de18e15809f04d4599bc
-N
-config-data/ms-api-gateway.yml,b\d\bdc1517a2ea1326cfbb114e658efef49273e0bf9
 I
 docker/docker-compose.yml,3\f\3fe733692645251b38d6ef0a55b2d48c3a1cf387
 L
