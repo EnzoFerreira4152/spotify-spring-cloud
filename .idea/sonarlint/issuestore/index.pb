@@ -39,11 +39,7 @@ D
 api-playlist/pom.xml,9\a\9ad708d40dfcc7018bb9a16beca0f79c8bd7fc73
 A
 api-music/pom.xml,2\1\2104ef409d3d0ed054963b165caefad16ce33621
-y
-Iapi-music/src/main/java/com/spotify/music/controller/MusicController.java,a\3\a3188525af3ca607faa37d7f0bd201a12c3bec84
 s
 Capi-music/src/main/java/com/spotify/music/service/MusicService.java,0\5\053aabdd2eda91eb94496b7fe22e46dcbeb928ed
 ‡
 Wapi-playlist/src/main/java/com/spotify/playlist/exceptions/CircuitBreakerException.java,5\a\5adaa34860ecf14bab038880706d331b21b322c0
-N
-config-data/ms-api-gateway.yml,b\d\bdc1517a2ea1326cfbb114e658efef49273e0bf9
