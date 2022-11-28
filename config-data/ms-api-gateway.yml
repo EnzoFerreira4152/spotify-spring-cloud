@@ -14,8 +14,8 @@ spring:
       discovery:
         locator:
           enabled: true
-      default-filters:
-        - TokenRelay
+#      default-filters:
+#        - TokenRelay
       routes:
         - id: apiMusic
           uri: lb://api-music
