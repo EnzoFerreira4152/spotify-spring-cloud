@@ -31,8 +31,6 @@ r
 Bapi-music/src/main/java/com/spotify/music/ApiMusicApplication.java,1\4\140c0ad76124140be36cb85530346c3328464faf
 {
 Kapi-playlist/src/main/java/com/spotify/playlist/ApiPlaylistApplication.java,9\7\97cf59ceb01bcb2c756b8f9ba9cc7c8a55ee93fb
-C
-api-gateway/pom.xml,2\b\2bfa2b108f2439e99e004f4085b58c22cf995f73
 s
 Capi-playlist/src/main/java/com/spotify/playlist/model/Playlist.java,f\1\f185631d3cb72c06d38c72eaab714524eb7c1096
 D
