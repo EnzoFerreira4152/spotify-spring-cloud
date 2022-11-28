@@ -2,6 +2,7 @@ server:
   port: ${PORT:0}
 
 spring:
+#Config Acceso a base de dato
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/spotify-dev
@@ -11,3 +12,36 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+
+#Config Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: circuitbreakers, circuitbreakerevents, health, info
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: true
+
+#Config Resilience4j CircuitBreaker y Retry
+resilience4j:
+  circuitbreaker:
+    instances:
+      subscription:
+        allowHeathIndicatorToFail: false
+        registerHealthIndicator: true #Habilita a resilience4j a agregar info al endpoint health
+        slidingWindowType: COUNT_BASED #CB se activa mediante un contador de eventos
+        slidingWindowSize: 5 #Cantidad de fallas que tienen que ocurrir para que se pase al estado abierto
+        failureRateThreshold: 50 #Porcentaje de fallas para que CB se active y pase al estado abierto
+        waitDurationInOpenState: 15000 #Tiempo de permanencia en el estado abierto antes de pasar al estado medio-abierto
+        permittedNumberOfCallsInHalfOpenState: 3 #Cantidad de llamadas en estado medio-abierto para determinar si pasa a estado cerrado o estado abierto
+        automaticTransitionFromOpenToHalfOpenEnabled: true #Pasará al estado medio-abierto luego del tiempo de espera
+  retry:
+    instances:
+      subscription:
+        maxAttempts: 3
+        waitDuration: 1000
+        retryExceptions[0]: feign.FeignException$InternalServerError

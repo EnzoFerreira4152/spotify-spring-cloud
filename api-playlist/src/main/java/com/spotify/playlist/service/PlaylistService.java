@@ -1,9 +1,13 @@
 package com.spotify.playlist.service;
 
 import com.spotify.playlist.client.MusicFeign;
+import com.spotify.playlist.exceptions.CircuitBreakerException;
 import com.spotify.playlist.model.PlayListMusic;
 import com.spotify.playlist.model.Playlist;
 import com.spotify.playlist.repository.PlaylistRepository;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +28,6 @@ public class PlaylistService {
         playlistRepository.save(playlist);
     }
 
-
     public List<Playlist> getAll() {
         return playlistRepository.findAll();
     }
@@ -32,7 +35,6 @@ public class PlaylistService {
     public Playlist getById(Long id) {
         return playlistRepository.findById(id).orElse(null);
     }
-
 
     public void deleteById(Long id) {
         playlistRepository.deleteById(id);
@@ -44,10 +46,12 @@ public class PlaylistService {
         }
     }
 
-    public void addMusic(Long idPlayList, Long idMusic) throws Exception {
+    @CircuitBreaker(name = "music", fallbackMethod = "addMusicFallbackMethod")
+    @Retry(name = "music")
+    public void addMusic(Long idPlayList, Long idMusic, Boolean throwError) throws Exception {
         var playList = playlistRepository.findById(idPlayList);
         if (playList.isPresent()) {
-            var result = musicFeign.getById(idMusic);
+            var result = musicFeign.getById(idMusic, throwError);
             if (result == null) {
               throw new Exception("Music not found");
             }
@@ -56,5 +60,9 @@ public class PlaylistService {
         }else{
             throw new Exception("Playlist not found");
         }
+    }
+
+    private void addMusicFallbackMethod(CallNotPermittedException ex) throws CircuitBreakerException {
+        throw new CircuitBreakerException("CircuitBreaker se activó: " + ex.getMessage());
     }
 }

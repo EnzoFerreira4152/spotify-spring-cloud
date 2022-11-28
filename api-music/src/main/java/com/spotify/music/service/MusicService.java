@@ -23,7 +23,10 @@ public class MusicService {
         return musicRepository.findAll();
     }
 
-    public Music getById(Long id) {
+    public Music getById(Long id, Boolean throwError) throws RuntimeException{
+        if(throwError)
+            throw new RuntimeException();
+
         return musicRepository.findById(id).orElse(null);
     }
 
