@@ -52,7 +52,6 @@ public class PlaylistService {
         if (playList.isPresent()) {
             var result = musicFeign.getById(idMusic, true);
             if (result == null) {
-                System.out.println("PlaylistService exception");
                 throw new Exception("Music not found");
             }
             playList.get().getMusics().add(new PlayListMusic(null, playList.get(),result.getMusicId(),result.getName()));

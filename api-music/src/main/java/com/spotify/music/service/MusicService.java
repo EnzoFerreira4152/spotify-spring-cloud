@@ -23,9 +23,9 @@ public class MusicService {
         return musicRepository.findAll();
     }
 
-    public Music getById(Long id, Boolean throwError) throws RuntimeException{
+    public Music getById(Long id, Boolean throwError) throws Exception{
         if(throwError){
-            throw new RuntimeException();
+            throw new Exception();
         }
         return musicRepository.findById(id).orElse(null);
     }

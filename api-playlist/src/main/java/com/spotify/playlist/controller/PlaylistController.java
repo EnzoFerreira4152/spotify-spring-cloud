@@ -50,12 +50,12 @@ public class PlaylistController {
 
     @PatchMapping("/addMusic")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<?> addMusic(@RequestBody AddMusicDto addMusicDto) {
-        try {
+    public ResponseEntity<?> addMusic(@RequestBody AddMusicDto addMusicDto) throws Exception {
+        //try {
             playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId());
-        } catch (Exception e) {
+/*        } catch (Exception e) {
             return ResponseEntity.notFound().build();
-        }
+        }*/
         return ResponseEntity.ok().build();
     }
 

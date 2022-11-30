@@ -27,7 +27,6 @@ public interface MusicFeign {
     }
 
     private void addMusicFallbackMethod(CallNotPermittedException ex) throws CircuitBreakerException {
-        System.out.println("CircuitBreaker exception");
         throw new CircuitBreakerException("CircuitBreaker se activó: " + ex.getMessage());
     }
 }
