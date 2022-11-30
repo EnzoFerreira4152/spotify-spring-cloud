@@ -19,6 +19,18 @@ public class MusicController {
         this.musicService = musicService;
     }
 
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<List<Music>> getAll() {
+        return ResponseEntity.ok(musicService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<Music> getById(@PathVariable Long id, Boolean throwError) {
+        return ResponseEntity.ok(musicService.getById(id, throwError));
+    }
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public ResponseEntity<Long> create(@RequestBody Music music) {
@@ -31,18 +43,6 @@ public class MusicController {
     public ResponseEntity update(@RequestBody Music music) {
         musicService.update(music);
         return ResponseEntity.ok().build();
-    }
-
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<List<Music>> getAll() {
-        return ResponseEntity.ok(musicService.getAll());
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<Music> getById(@PathVariable Long id, @RequestParam(defaultValue = "false") Boolean throwError) {
-        return ResponseEntity.ok(musicService.getById(id, throwError));
     }
 
     @DeleteMapping("/{id}")

@@ -11,6 +11,7 @@ import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlaylistService {
@@ -46,14 +47,13 @@ public class PlaylistService {
         }
     }
 
-    @CircuitBreaker(name = "music", fallbackMethod = "addMusicFallbackMethod")
-    @Retry(name = "music")
-    public void addMusic(Long idPlayList, Long idMusic, Boolean throwError) throws Exception {
-        var playList = playlistRepository.findById(idPlayList);
+    public void addMusic(Long idPlayList, Long idMusic) throws Exception {
+        Optional<Playlist> playList = playlistRepository.findById(idPlayList);
         if (playList.isPresent()) {
-            var result = musicFeign.getById(idMusic, throwError);
+            var result = musicFeign.getById(idMusic, true);
             if (result == null) {
-              throw new Exception("Music not found");
+                System.out.println("PlaylistService exception");
+                throw new Exception("Music not found");
             }
             playList.get().getMusics().add(new PlayListMusic(null, playList.get(),result.getMusicId(),result.getName()));
             playlistRepository.save(playList.get());
@@ -62,7 +62,4 @@ public class PlaylistService {
         }
     }
 
-    private void addMusicFallbackMethod(CallNotPermittedException ex) throws CircuitBreakerException {
-        throw new CircuitBreakerException("CircuitBreaker se activó: " + ex.getMessage());
-    }
 }

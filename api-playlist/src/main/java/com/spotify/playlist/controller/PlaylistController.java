@@ -1,5 +1,6 @@
 package com.spotify.playlist.controller;
 
+import com.spotify.playlist.dto.AddMusicDto;
 import com.spotify.playlist.model.Playlist;
 import com.spotify.playlist.service.PlaylistService;
 import lombok.Getter;
@@ -21,6 +22,18 @@ public class PlaylistController {
         this.playListService = playListService;
     }
 
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<List<Playlist>> getAll() {
+        return ResponseEntity.ok(playListService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<Playlist> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(playListService.getById(id));
+    }
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public ResponseEntity<Long> create(@RequestBody Playlist playlist) {
@@ -37,32 +50,13 @@ public class PlaylistController {
 
     @PatchMapping("/addMusic")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity addMusic(@RequestBody AddMusicDto addMusicDto, @RequestParam(defaultValue = "false") Boolean throwError) {
+    public ResponseEntity<?> addMusic(@RequestBody AddMusicDto addMusicDto) {
         try {
-            playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId(), throwError);
+            playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId());
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().build();
-    }
-
-    @Getter
-    @Setter
-    static class AddMusicDto{
-        private Long playListId;
-        private Long musicId;
-    }
-
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<List<Playlist>> getAll() {
-        return ResponseEntity.ok(playListService.getAll());
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<Playlist> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(playListService.getById(id));
     }
 
     @DeleteMapping("/{id}")
@@ -71,4 +65,5 @@ public class PlaylistController {
         playListService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
 }
