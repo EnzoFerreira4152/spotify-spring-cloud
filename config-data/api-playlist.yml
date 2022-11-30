@@ -41,7 +41,7 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true #Pasará al estado medio-abierto luego del tiempo de espera
   retry:
     instances:
-      subscription:
+      music:
         maxAttempts: 3
         waitDuration: 1000
         retryExceptions[0]: feign.FeignException$InternalServerError
