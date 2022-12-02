@@ -50,9 +50,12 @@ public class PlaylistController {
 
     @PatchMapping("/addMusic")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity addMusic(@RequestBody AddMusicDto addMusicDto) throws Exception {
+    public ResponseEntity addMusic(
+            @RequestBody AddMusicDto addMusicDto,
+            @RequestParam(name = "error", defaultValue = "false") Boolean throwError)
+            throws Exception {
         try {
-            playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId());
+            playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId(), throwError);
        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

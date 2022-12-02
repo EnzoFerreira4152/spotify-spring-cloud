@@ -49,10 +49,10 @@ public class PlaylistService {
 
     @CircuitBreaker(name = "music", fallbackMethod = "addMusicFallbackMethod")
     @Retry(name = "music")
-    public void addMusic(Long idPlayList, Long idMusic) throws Exception {
+    public void addMusic(Long idPlayList, Long idMusic, Boolean throwError) throws Exception {
         System.out.println("Ejecutando addMusic...");
         Optional<Playlist> playList = playlistRepository.findById(idPlayList);
-        var result = musicFeign.getById(idMusic, false);
+        var result = musicFeign.getById(idMusic, throwError);
         if (playList.isPresent()) {
             playList.get().getMusics().add(new PlayListMusic(null, playList.get(),result.getMusicId(),result.getName()));
             playlistRepository.save(playList.get());

@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "api-music", url = "http://localhost:8081")
+@FeignClient(name = "api-music")
 public interface MusicFeign {
 
-    @GetMapping("/{id}")
-    Music getById(@PathVariable Long id, Boolean throwError);
+    @GetMapping("/api/v1/musics/{id}")
+    Music getById(@PathVariable Long id, @RequestParam Boolean throwError);
 
     @Getter
     @Setter

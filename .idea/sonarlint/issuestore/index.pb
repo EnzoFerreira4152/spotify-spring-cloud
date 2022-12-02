@@ -37,5 +37,3 @@ Capi-playlist/src/main/java/com/spotify/playlist/model/Playlist.java,f\1\f18563
 Rapi-playlist/src/main/java/com/spotify/playlist/repository/PlaylistRepository.java,1\c\1c3bc011cc47051935ca30a1c99cac7f314bb4bf
 j
 :api-music/src/main/java/com/spotify/music/model/Music.java,0\d\0d4da3073ad5b8885b984242fac8889de514172d
-v
-Fapi-playlist/src/main/java/com/spotify/playlist/client/MusicFeign.java,e\c\ecba6c84ce3b150ca316f17bd7ff9abfbed8fc8d
