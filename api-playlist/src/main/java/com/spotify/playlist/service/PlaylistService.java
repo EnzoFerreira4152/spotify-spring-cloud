@@ -47,18 +47,22 @@ public class PlaylistService {
         }
     }
 
+    @CircuitBreaker(name = "music", fallbackMethod = "addMusicFallbackMethod")
+    @Retry(name = "music")
     public void addMusic(Long idPlayList, Long idMusic) throws Exception {
+        System.out.println("Ejecutando addMusic...");
         Optional<Playlist> playList = playlistRepository.findById(idPlayList);
+        var result = musicFeign.getById(idMusic, true);
         if (playList.isPresent()) {
-            var result = musicFeign.getById(idMusic, true);
-            if (result == null) {
-                throw new Exception("Music not found");
-            }
             playList.get().getMusics().add(new PlayListMusic(null, playList.get(),result.getMusicId(),result.getName()));
             playlistRepository.save(playList.get());
         }else{
             throw new Exception("Playlist not found");
         }
+    }
+
+    private void addMusicFallbackMethod(CallNotPermittedException ex) throws CircuitBreakerException {
+        throw new CircuitBreakerException("CircuitBreaker se activó: " + ex.getMessage());
     }
 
 }

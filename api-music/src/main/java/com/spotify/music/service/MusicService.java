@@ -25,7 +25,7 @@ public class MusicService {
 
     public Music getById(Long id, Boolean throwError) throws Exception{
         if(throwError){
-            throw new Exception();
+            throw new Exception("Error en el MS Music");
         }
         return musicRepository.findById(id).orElse(null);
     }

@@ -50,13 +50,13 @@ public class PlaylistController {
 
     @PatchMapping("/addMusic")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<?> addMusic(@RequestBody AddMusicDto addMusicDto) throws Exception {
-        //try {
+    public ResponseEntity addMusic(@RequestBody AddMusicDto addMusicDto) throws Exception {
+        try {
             playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId());
-/*        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }*/
-        return ResponseEntity.ok().build();
+       } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FAILED_DEPENDENCY);
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @DeleteMapping("/{id}")
