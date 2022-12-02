@@ -19,7 +19,7 @@ class TestAddSongToPlaylist {
                 .contentType(ContentType.JSON)
                 .body(musicDto)
                 .when()
-                .post("http://localhost:8080/api/v1/playlists/addMusic")
+                .patch("http://localhost:8080/api/v1/playlists/addMusic")
                 .then()
                 .statusCode(201);
     }

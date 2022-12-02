@@ -54,7 +54,7 @@ public class PlaylistController {
         try {
             playListService.addMusic(addMusicDto.getPlayListId(), addMusicDto.getMusicId());
        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.FAILED_DEPENDENCY);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

@@ -52,7 +52,7 @@ public class PlaylistService {
     public void addMusic(Long idPlayList, Long idMusic) throws Exception {
         System.out.println("Ejecutando addMusic...");
         Optional<Playlist> playList = playlistRepository.findById(idPlayList);
-        var result = musicFeign.getById(idMusic, true);
+        var result = musicFeign.getById(idMusic, false);
         if (playList.isPresent()) {
             playList.get().getMusics().add(new PlayListMusic(null, playList.get(),result.getMusicId(),result.getName()));
             playlistRepository.save(playList.get());

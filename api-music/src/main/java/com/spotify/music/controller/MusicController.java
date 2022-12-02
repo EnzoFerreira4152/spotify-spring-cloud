@@ -27,7 +27,7 @@ public class MusicController {
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity<Music> getById(@PathVariable Long id, @RequestParam Boolean throwError) throws Exception {
+    public ResponseEntity<Music> getById(@PathVariable Long id, Boolean throwError) throws Exception {
         return ResponseEntity.ok(musicService.getById(id, throwError));
     }
 

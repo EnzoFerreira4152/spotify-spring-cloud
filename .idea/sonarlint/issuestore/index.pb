@@ -39,7 +39,3 @@ j
 :api-music/src/main/java/com/spotify/music/model/Music.java,0\d\0d4da3073ad5b8885b984242fac8889de514172d
 v
 Fapi-playlist/src/main/java/com/spotify/playlist/client/MusicFeign.java,e\c\ecba6c84ce3b150ca316f17bd7ff9abfbed8fc8d
-s
-Capi-music/src/main/java/com/spotify/music/service/MusicService.java,0\5\053aabdd2eda91eb94496b7fe22e46dcbeb928ed
-y
-Iapi-music/src/main/java/com/spotify/music/controller/MusicController.java,a\3\a3188525af3ca607faa37d7f0bd201a12c3bec84
