@@ -14,8 +14,16 @@ spring:
     show-sql: true
 #Config Zipkin
   zipkin:
-    base-url: http://localhost:9411
+    base-url: http://zipkin-container:9411 #En lugar de localhost, coloco el nombre del container de docker de zipkin
     enabled: true
+    sender:
+      type: rabbit
+#Config RabbitMQ
+  rabbitmq:
+    addresses: rabbitmq-container:5672 #En lugar de localhost, coloco el nombre del container de docker de rabbitmq
+    virtual-host: app_host
+    username: guest
+    password: guest
 
 #Config Actuator
 management:

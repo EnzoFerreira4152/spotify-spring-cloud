@@ -15,13 +15,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(name = "MUSIC")
-public class Music implements Serializable {
+public class Music {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MUSIC_ID", unique = true, nullable = false)
     private Long musicId;
 
@@ -30,5 +30,12 @@ public class Music implements Serializable {
 
     @Column(name = "SINGER_NAME", nullable = false, length = 50)
     private String singerName;
+
+    @Column(name = "LIKES", nullable = false)
+    private Integer likes = 0;
+
+    public void increaseLikes(){
+        likes++;
+    }
 
 }

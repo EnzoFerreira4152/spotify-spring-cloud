@@ -1,0 +1,6 @@
+
+[	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(Š»ñ
+[	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(²Öéƒ
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(èÑ³Äûÿÿÿÿ
+V
+java:S1144@";Remove this unused private "addMusicFallbackMethod" method.(€¥£åúÿÿÿÿ
